@@ -7,19 +7,34 @@
 
 (defonce root (createRoot  (gdom/getElement "app")))
 
-(defn repro []
+(defn text []
+  (r/with-let [text (r/atom "")]
+    [:input {:type :text
+             :on-change #(reset! text (.. % -target -value))
+             :value @text}]))
+
+(defn email []
   (r/with-let [text (r/atom "")]
     [:input {:type :email
              :on-change #(reset! text (.. % -target -value))
              :value @text}]))
+
+(defn number []
+  (r/with-let [text (r/atom "")]
+    [:input {:type :number
+             :on-change #(reset! text (.. % -target -value))
+             :value @text}]))
+
 (defn app
   []
-  [:div
-   "email type repro"
-   [repro]])
+  [:table
+   [:tbody
+
+    [:tr [:td "text"] [:td [text]]]
+    [:tr [:td "email"] [:td [email]]]
+    [:tr [:td "number"] [:td [number]]]]])
 
 (defn ^:dev/after-load start []
-  (prn "starting")
   (.render root (r/as-element [app])))
 
 (defn init
