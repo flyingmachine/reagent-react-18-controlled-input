@@ -1,0 +1,14 @@
+;; shadow-cljs configuration
+{:deps     {}
+ :dev-http {4444 {:roots ["resources/public" "frontend-target/dev/public"]}}
+ :builds   {:dev
+            {:target           :browser
+             :output-dir       "frontend-target/dev/public/js"
+             :asset-path       "/js"
+             :compiler-options {:optimizations           :none
+                                :source-map              true
+                                :source-map-detail-level :all}
+
+             :modules
+             {:main {:entries [main.app]
+                     :init-fn main.app/init}}}}}
