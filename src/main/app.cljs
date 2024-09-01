@@ -3,7 +3,8 @@
    ["react" :as react]
    ["react-dom/client" :refer [createRoot]]
    [goog.dom :as gdom]
-   [reagent.core :as r]))
+   [reagent.core :as r]
+   [reagent.dom.client :as client]))
 
 (defonce root (createRoot  (gdom/getElement "app")))
 
@@ -29,13 +30,12 @@
   []
   [:table
    [:tbody
-
     [:tr [:td "text"] [:td [text]]]
     [:tr [:td "email"] [:td [email]]]
     [:tr [:td "number"] [:td [number]]]]])
 
 (defn ^:dev/after-load start []
-  (.render root (r/as-element [app])))
+  (client/render root [app]))
 
 (defn init
   []
