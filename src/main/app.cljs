@@ -1,12 +1,8 @@
 (ns main.app
   (:require
-   ["react" :as react]
-   ["react-dom/client" :refer [createRoot]]
    [goog.dom :as gdom]
    [reagent.core :as r]
-   [reagent.dom.client :as client]))
-
-(defonce root (createRoot  (gdom/getElement "app")))
+   [reagent.dom :as rdom]))
 
 (defn text []
   (r/with-let [text (r/atom "")]
@@ -42,7 +38,7 @@
     [:tr [:td "number"] [:td [number]]]]])
 
 (defn ^:dev/after-load start []
-  (client/render root [app]))
+  (rdom/render [app] (gdom/getElement "app")))
 
 (defn init
   []

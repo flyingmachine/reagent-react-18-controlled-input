@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "react": "18",
-    "react-dom": "18"
+    "react": "17",
+    "react-dom": "17"
   },
   "devDependencies": {
     "shadow-cljs": "2.28.14"
